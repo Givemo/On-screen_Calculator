@@ -1,6 +1,6 @@
 
 
-/* var a = "", 
+ var a = "", 
     b = "", 
     operator = "";
 
@@ -11,6 +11,8 @@ multiply = (a, b) => a * b;
 subtract = (a, b) => a - b;
 
 add = (a, b) =>  a + b;
+
+percent = (a) => (a/100) * 100;
 
 operate = (a, b, operators) => {
     switch(operator) {
@@ -23,7 +25,7 @@ operate = (a, b, operators) => {
         case "+":
             return add(a,b);
     }
-} */
+}
 /* 
 function reverseNumberFormat(num) {
     return Number(num.replace(/,/g,''));
@@ -109,7 +111,18 @@ for(let i = 0; i < operator.length; i++) {
                 printResultHistory("");
 
                 if(this.id == "=") {
-                    let result = (new Function('return '+history))() 
+                    let result// = (new Function('return '+history))()
+                    let firstNumber = Number.parseFloat(output);
+                    let secondNumber = Number.parseFloat(history);
+                    if(history.includes('*')) {
+                        result = multiply(firstNumber, secondNumber);
+                    } else if (history.includes('+')) {
+                        result = add(firstNumber, secondNumber);
+                    } else if (history.includes('-')) {
+                        result = subtract(secondNumber, firstNumber);
+                    } else if (history.includes('÷')) {
+                        result = devide(secondNumber, firstNumber);
+                    }
                     printResult(result);
                     printResultHistory("");
                 } else {
