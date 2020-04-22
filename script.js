@@ -110,7 +110,7 @@ for(let i = 0; i < operator.length; i++) {
                 history = history + output;
                 printResultHistory("");
 
-                if(this.id == "=") {
+                if(this.id == "=" || history.includes('*') || history.includes('+') || history.includes('-') || history.includes('÷')) {
                     let result// = (new Function('return '+history))()
                     let firstNumber = Number.parseFloat(output);
                     let secondNumber = Number.parseFloat(history);
